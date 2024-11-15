@@ -1,0 +1,28 @@
+﻿<Window x:Class="HiAnime_Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HiAnime_Desktop"
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background=" #201F31">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Search Box and Button at the top -->
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+            <TextBox KeyDown="searchbox_KeyDown"  Text="Type in an anime name" x:Name="searchbox" HorizontalAlignment="Center" Width="Auto" FontSize="17" FontWeight="Bold" TextChanged="searchbox_TextChanged" />
+            <Button Content="Search" Click="Button_Click" Width="70" FontSize="17" FontWeight="Bold" />
+        </StackPanel>
+
+        <!-- Centered Scrollable WrapPanel for Film Items -->
+        <ScrollViewer Width="Auto" Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+            <WrapPanel Name="FilmWrapPanel" ItemWidth="320" ItemHeight="448" Orientation="Horizontal" HorizontalAlignment="Center"/>
+        </ScrollViewer>
+
+    </Grid>
+</Window>

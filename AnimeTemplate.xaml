@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="HiAnime_Desktop.AnimeTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HiAnime_Desktop"
+             mc:Ignorable="d" 
+             Background =" #201F31"
+             Width="320" Height="448">
+
+
+
+    <UserControl.Resources>
+        <!-- Define a custom ControlTemplate for Button -->
+        <ControlTemplate x:Key="NoEffectsButtonTemplate" TargetType="Button">
+            <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="1">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <Border Margin="10" >
+
+        <StackPanel>
+            <Button
+                BorderBrush="Transparent"
+                Template="{StaticResource NoEffectsButtonTemplate}" 
+                Click="navigate_to_anime" Background="Transparent" >
+                <Image  Source="{Binding posterLink}" Height="400" Width="300" Stretch="Uniform" HorizontalAlignment="Left" />
+            </Button>
+            <!-- Rectangle with a gradient for the fade-out effect -->
+            <Rectangle VerticalAlignment="Bottom"  Height="100" RenderTransformOrigin="0.5,0.5" Fill="#201F31">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-1" Y="-99"/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+                <Rectangle.OpacityMask>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="Transparent" Offset="0.0" />
+                        <GradientStop Color="Black" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Rectangle.OpacityMask>
+            </Rectangle>
+            <TextBlock TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Text="{Binding name}" Foreground="white" FontSize="15" FontWeight="Bold" TextAlignment="Left" >
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0" Y="-90"/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+
+        </StackPanel>
+
+    </Border>
+</UserControl>
